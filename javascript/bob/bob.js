@@ -11,7 +11,7 @@ Bob.prototype.hey = function(phrase) {
     }
     let hasChars = false;
     [...phrase].forEach(ch => {
-      if (['!', '?', '.', ',', ' '].indexOf(ch) > 0) { return }
+      if (['!', '?', '.', ',', ' '].indexOf(ch) >= 0) { return }
       if (!isInt(ch)) { hasChars = true };
     })
     return hasChars; 
