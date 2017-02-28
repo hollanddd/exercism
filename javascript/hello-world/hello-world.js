@@ -3,12 +3,11 @@
 // convenience to get you started writing code faster.
 // Make sure to look at hello-world.spec.js--that should give you some hints about what is
 // expected here.
-
-var HelloWorld = function() {};
-
-HelloWorld.prototype.hello = function(input) {
-  if (input.length < 1) { input = "World" }
-  return `Hello, ${input}!`
+class HelloWorld {
+  hello(input) {
+    if (input.length < 1) { input = "World" }
+    return `Hello, ${input}!`  
+  }
 };
 
 module.exports = HelloWorld;

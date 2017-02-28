@@ -16,4 +16,3 @@ Isogram.prototype.isIsogram = function() {
 }
 
 module.exports = Isogram;
-
