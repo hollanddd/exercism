@@ -1,14 +1,15 @@
 
 class BeerSong {
   sing(from, to) {
-    let result = ''
-    if (to === undefined) to = 0
-    while (from >= to) {
-      result += this.verse(from)
-      if (from !== to) { result += '\n' }
-      from--
+    if (to === undefined) to = 0;
+    let song = '';
+    let verses = [...Array(from + 1).keys()];
+    for (let number of verses.sort(() => 1)) {
+      song += this.verse(number);
+      if (number === to) break;
+      song += '\n'
     }
-    return result
+    return song
   }
 
   verse(number) {
