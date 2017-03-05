@@ -3,11 +3,11 @@ class BeerSong {
   sing(from, to) {
     if (to === undefined) to = 0;
     let song = '';
-    let verses = [...Array(from + 1).keys()];
-    for (let number of verses.sort(() => 1)) {
+    let verses = [...Array(from + 1).keys()].sort(() => 1);
+    for (let number of verses) {
       song += this.verse(number);
       if (number === to) break;
-      song += '\n'
+      song += '\n';
     }
     return song
   }
