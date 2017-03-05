@@ -1,31 +1,32 @@
 
-let BeerSong = function() {}
-
-BeerSong.prototype.verse = function(bottles) {
-  let pop = function(bottles) {
-    if (bottles === 0) return 'No more bottles'
-    if (bottles === 1) return '1 bottle'
-    if (bottles > 1) return `${bottles.toString()} bottles`
+class BeerSong {
+  sing(from, to) {
+    let result = ''
+    if (to === undefined) to = 0
+    while (from >= to) {
+      result += this.verse(from)
+      if (from !== to) { result += '\n' }
+      from--
+    }
+    return result
   }
 
-  if (bottles === 1) return '1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n';
-  if (bottles === 0) return 'No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n';
-  
-  let start = `${pop(bottles)} of beer on the wall`
-  let middle = `, ${pop(bottles)} of beer.\nTake one down and pass it around, `
-  let end = `${pop(bottles - 1)} of beer on the wall.\n`
-  return `${start}${middle}${end}`
-}
-
-BeerSong.prototype.sing = function(from, to) {
-  let result = ''
-  if (to === undefined) to = 0
-  while (from >= to) {
-    result += this.verse(from)
-    if (from !== to) { result += '\n' }
-    from--
+  verse(number) {
+    switch (number) {
+    case 0:
+      return 'No more bottles of beer on the wall, no more bottles of beer.\n' +
+      'Go to the store and buy some more, 99 bottles of beer on the wall.\n';
+    case 1:
+      return '1 bottle of beer on the wall, 1 bottle of beer.\n' +
+      'Take it down and pass it around, no more bottles of beer on the wall.\n';
+    case 2:
+      return '2 bottles of beer on the wall, 2 bottles of beer.\n' +
+      'Take one down and pass it around, 1 bottle of beer on the wall.\n';
+    default:
+      return `${number} bottles of beer on the wall, ${number} bottles of beer.\n` +
+      `Take one down and pass it around, ${number -1} bottles of beer on the wall.\n`
+    }
   }
-  return result
 }
 
 module.exports = BeerSong
