@@ -1,15 +1,18 @@
-
+"use strict"
 class BeerSong {
-  sing(from, to) {
-    if (to === undefined) to = 0;
-    let song = '';
-    let verses = [...Array(from + 1).keys()].sort(() => 1);
-    for (let number of verses) {
-      song += this.verse(number);
-      if (number === to) break;
-      song += '\n';
+  countdown(from, to) {
+    let result = []
+    while (from >= to) {
+      result.push(from--)
     }
-    return song
+    return result
+  }
+
+  sing(from, to) {
+    to = to ? to: to = 0;
+    return this.countdown(from, to).map(number => {
+      return this.verse(number)
+    }).join('\n')
   }
 
   verse(number) {
